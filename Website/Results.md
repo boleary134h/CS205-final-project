@@ -1,40 +1,6 @@
-<<<<<<< HEAD
 # Results
 
-## Parallelization
-
-### MPI
-
-
-| AWS Instances | Cores per Instance | Total Processes | Exec. Time (sec) | Speedup |
-| ------------- | ------------------ | --------------- | ---------------- | ------- |
-| 1         | 1                  | 1               | 2305.430           |  1.000    |
-| 1         | 2                  | 2               | 1164.980           | 1.979    |
-| 1         | 4                  | 4               | 576.182            | 4.001    |
-| 2         | 1                  | 2               | 1609.11           | 1.433    |
-| 2         | 2                  | 4               | 802.049            | 2.874    |
-| 2         | 4                  | 8               | 403.478            | 5.714    |
-
-![MPISpeedupPlot](mpi_speedup_plot.png)
-
-### Hybrid: MPI and OpenMP
-
-| AWS Instances | Cores per Instance | OMP Threads | Total Processes | Exec. Time (sec) | Speedup |
-| ------------- | ------------------ | ----------- | --------------- | ---------------- | ------- |
-| 1         | 1               | 1 |   | 1               | 2305.430           |  1.000    |
-| 1         | 1               | 2 |   | 2               | 2323.35           |  0.992    |
-| 1         | 2               | 2 |   | 4               | 1164.16           | 1.980    |
-| 1         | 4               | 2 |   | 8               | 582.572            | 3.957    |
-| 2         | 1               | 2 |   | 4               | 1636.17           | 1.409    |
-| 2         | 2               | 2 |   | 8               | 819.445            | 2.813    |
-| 2         | 4               | 2 |   | 16              | 401.661            | 5.740    |
-
-![HybridSpeedupPlot](hybrid_speedup_plot.png)
-
-=======
-# Results
-
-## Sequential Runtime
+## Sequential 
 
 The [sequential model](https://github.com/boleary134h/CS205-final-project/blob/main/Website/SequentialModel.md) was run on an AWS t2.micro instance with the following specifications:
 
@@ -50,4 +16,38 @@ There are **287083** documents in the CNN-DailyMail database, and the document m
 Computing similarity matrix takes the most time (3.43 ms) out of all steps. Interestingly, it took more time to read the matrices from the text files (1.19 ms) than to compute PageRank (0.059 ms). Sorting the sentences (0.008 ms) takes negligible time as expected, and writing the indices of the top 3 sentences to output (0.016 ms) is not a bottleneck either. 
 
 Overall, the algorithm doesn't take long to run for each document (4.74 ms on average), but the total time for 280K documents is still noticeable. This suggests that our problem is likely to be data intensive more than compute intensive.
->>>>>>> 60b4287dd8af0ae37ffe4feb37854b59d2283910
+
+## Parallelization
+
+### MPI
+
+
+| AWS Instances | Cores per Instance | Total Processes | Exec. Time (sec) | Speedup |
+| ------------- | ------------------ | --------------- | ---------------- | ------- |
+| 1         | 1                  | 1               | 2305.430           |  1.000    |
+| 1         | 2                  | 2               | 1164.980           | 1.979    |
+| 1         | 4                  | 4               | 576.182            | 4.001    |
+| 2         | 1                  | 2               | 1609.11           | 1.433    |
+| 2         | 2                  | 4               | 802.049            | 2.874    |
+| 2         | 4                  | 8               | 403.478            | 5.714    |
+
+![MPISpeedupPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/mpi_speedup_plot.png)
+
+### Hybrid: MPI and OpenMP
+
+| AWS Instances | Cores per Instance | OMP Threads | Total Processes | Exec. Time (sec) | Speedup |
+| ------------- | ------------------ | ----------- | --------------- | ---------------- | ------- |
+| 1         | 1               | 1 |   | 1               | 2305.430           |  1.000    |
+| 1         | 1               | 2 |   | 2               | 2323.35           |  0.992    |
+| 1         | 2               | 2 |   | 4               | 1164.16           | 1.980    |
+| 1         | 4               | 2 |   | 8               | 582.572            | 3.957    |
+| 2         | 1               | 2 |   | 4               | 1636.17           | 1.409    |
+| 2         | 2               | 2 |   | 8               | 819.445            | 2.813    |
+| 2         | 4               | 2 |   | 16              | 401.661            | 5.740    |
+
+![HybridSpeedupPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/hybrid_speedup_plot.png)
+
+=======
+# Results
+
+

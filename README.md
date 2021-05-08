@@ -17,4 +17,4 @@ To fill in
 5. [Results](Website/Results.md)
 6. [Discussion](Website/Discussion.md)
 7. [How To Run Code](Website/HowToRunCode.md)
-8. [Cluster Configuration] (Website/ClusterConfiguration.md)
+8. [Cluster Configuration](Website/ClusterConfiguration.md)
