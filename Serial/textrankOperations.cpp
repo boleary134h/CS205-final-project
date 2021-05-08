@@ -6,9 +6,31 @@
 #include <algorithm>
 #include <stdexcept>
 #include <math.h>
+#include <stdio.h>
+#include <dirent.h>
+#include <sys/types.h>
 
 #include "textrank.hpp"
 using namespace std;
+
+void getFilesFromDir(const char *path, vector<string> &fileVec)
+{
+    fileVec.clear();
+    struct dirent *entry;
+    DIR *dir = opendir(path);
+    if (dir == NULL) {
+        return;
+    }
+
+    while ((entry = readdir(dir)) != NULL) {
+    	string str=entry->d_name;
+    	if(str.length()>0 && str[0]!='.')
+    		fileVec.push_back(str);
+    }
+    std::sort(fileVec.begin(), fileVec.end());
+    closedir(dir);
+
+}
 
 double cosineSimilarity(vector<double> &a, vector<double> &b)
 {
@@ -38,7 +60,8 @@ double cosineSimilarity(vector<double> &a, vector<double> &b)
 
 	if (d_a == 0.0f || d_b == 0.0f)
 	{
-		throw logic_error("Cosine similarity undefined when input vector is zero-vector.");
+		return 0;
+		//throw logic_error("Cosine similarity undefined when input vector is zero-vector.");
 	}
 
 	return mul / (sqrt(d_a * d_b));
@@ -146,9 +169,9 @@ void TextRanker::pageRank()
 		for (int i = 0; i < n_dim; i++) {
 			error += fabs(temp_centrality[i] - cs[i].score);
 		}
-		if (iteration % 5 == 0) {
+		/*if (iteration % 5 == 0) {
 			printf("error: %f \n",error);
-		}
+		}*/
 
 		// transfer centrality
 		for (int i = 0; i < n_dim; i++) {
@@ -158,7 +181,7 @@ void TextRanker::pageRank()
 		// break while loop if reach convergence
 		iteration++;
 		if (error < 0.001) {
-			printf("Reached convergence after %d iterations \n" , iteration);
+			//printf("Reached convergence after %d iterations \n" , iteration);
 			break;
 		}
 	}
