@@ -45,9 +45,9 @@ double cosineSimilarity(vector<double> &a, vector<double> &b)
 		throw logic_error("Vector A and Vector B are empty.");
 	}
 
-	float mul = 0.0;
-	float d_a = 0.0;
-	float d_b = 0.0;
+	double mul = 0.0;
+	double d_a = 0.0;
+	double d_b = 0.0;
 
 	vector<double>::iterator a_iter = a.begin();
 	vector<double>::iterator b_iter = b.begin();
