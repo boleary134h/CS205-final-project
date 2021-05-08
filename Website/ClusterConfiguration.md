@@ -29,7 +29,7 @@ We follow a similar setup as in [Lab7_2](https://harvard-iacs.github.io/2021-CS2
 ### Info on Compiler:
 * mpic++ - mpiexec version 3.3a2  
 * g++ 7.5.0
-* Compiler flags used: -fopenmp, 
+* Compiler flags used: -fopenmp, std=c++11
 
 ### C++ Libraries Used:
 * iostream
