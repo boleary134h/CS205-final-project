@@ -30,8 +30,8 @@ if __name__ == '__main__':
     plt.ylabel('Serial Time (sec) / Parallel Time (sec)')   
     plt.title('MPI Speedup')
     plt.legend()
-    #plt.show()
     plt.savefig('mpi_speedup_plot.png')
+    plt.show()
 
     
 
@@ -58,8 +58,8 @@ if __name__ == '__main__':
     plt.ylabel('Serial Time (sec) / Parallel Time (sec)')   
     plt.title('Hybrid Speedup')
     plt.legend()
-    #plt.show()
     plt.savefig('hybrid_speedup_plot.png')
+    plt.show()
 
 
 
