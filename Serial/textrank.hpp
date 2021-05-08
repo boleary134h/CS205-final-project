@@ -45,7 +45,6 @@ public:
 	}
 
 	void computeSentenceSimilarity(vector<vector<double>> &sentenceInput);
-	vector<vector<double>>& getSimilarityMatrix() {return similarityMatrix;}
 	void pageRank();
 	void sortCentrality();
 	void writeOutput(int x, string filename);
@@ -59,6 +58,7 @@ struct centralityScore {
     double score;
 };
 
+extern void getFilesFromDir(const char *path, vector<string> &fileVec);
 extern double cosineSimilarity(vector<double> &a, vector<double> &b);
 extern bool compare (const centralityScore& a, const centralityScore& b);
 
