@@ -45,13 +45,13 @@ For the hybrid model, MPI is used in a similar way as mentioned in the MPI secti
 
 | AWS Instances | Cores per Instance | OMP Threads | Total Processes | Exec. Time (sec) | Speedup |
 | ------------- | ------------------ | ----------- | --------------- | ---------------- | ------- |
-| 1         | 1               | 1 |   | 1               | 2305.430           |  1.000    |
-| 1         | 1               | 2 |   | 2               | 2323.35           |  0.992    |
-| 1         | 2               | 2 |   | 4               | 1164.16           | 1.980    |
-| 1         | 4               | 2 |   | 8               | 582.572            | 3.957    |
-| 2         | 1               | 2 |   | 4               | 1636.17           | 1.409    |
-| 2         | 2               | 2 |   | 8               | 819.445            | 2.813    |
-| 2         | 4               | 2 |   | 16              | 401.661            | 5.740    |
+| 1         | 1               | 1    | 1               | 2305.430           |  1.000    |
+| 1         | 1               | 2    | 2               | 2323.35           |  0.992    |
+| 1         | 2               | 2    | 4               | 1164.16           | 1.980    |
+| 1         | 4               | 2    | 8               | 582.572            | 3.957    |
+| 2         | 1               | 2    | 4               | 1636.17           | 1.409    |
+| 2         | 2               | 2    | 8               | 819.445            | 2.813    |
+| 2         | 4               | 2    | 16              | 401.661            | 5.740    |
 
 ![HybridSpeedupPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/hybrid_speedup_plot.png)
 
