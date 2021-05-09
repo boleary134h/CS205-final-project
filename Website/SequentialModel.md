@@ -56,7 +56,6 @@ for (int i = 0; i < n; i++) {
 	}
 }
 
-
 // compute the error for convergence
 double error = 0.0;
 for (int i = 0; i < n; i++) {
