@@ -39,6 +39,22 @@ As mentioned previously, there are many documents within the CNN-DailyMail datas
 
 ![MPISpeedupPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/mpi_speedup_plot.png)
 
+In addition to analyzing the MPI model using strong scaling (above), we also analyze the model using weak scaling. To do this, we increase the problem size (# files) as well as the number of processors. We use 10, 20, and 40 files for 1, 2, and 4 processes, respectively. To alter the number of files, I change the hardcoded number of files in main.cpp.
+
+```cpp
+int n_files = 20; // original # is 144
+```
+
+The weak scaling speedup is constant at roughly 1.0.
+
+| AWS Instances | Cores per Instance | Total Processes | # Files | Exec. Time (sec) | Speedup |
+| ------------- | ------------------ | --------------- | ------- | ---------------- | ------- |
+| 1         | 1                  | 1             | 10  | 158.039           |  1.000    | 
+| 1         | 2                  | 2             | 20  | 160.105           | 0.987    |
+| 1         | 4                  | 4             | 40  | 163.084            | 0.969    |
+
+![MPISpeedupPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/mpi_speedup_plot_ws.png)
+
 ### Hybrid: MPI and OpenMP
 
 For the hybrid model, MPI is used in a similar way as mentioned in the MPI section. OpenMP is used to further parallelize each TextRank computation. For each of the configurations listed below, we set the number of OMP threads to be equal to 2. The hybrid results look similar to those of the MPI results. In other words, for a given number of AWS instances and cores per instance, the execution time and speedup appear to be similar whether or not OpenMP is used. In some occasions, the use of OpenMP seems to be slower. The additional benefits from parallelizing each TextRank computation appear to be small and they are offset by the additional overhead in a shared memory setup. We believe the hybrid model exhibits little benefit because each CNN-DailyMail article is relatively small and each individual TextRank computation is already relatively fast. The hybrid model is likely to produce more computational benefits if each article is much longer.   
@@ -49,11 +65,25 @@ For the hybrid model, MPI is used in a similar way as mentioned in the MPI secti
 | 1         | 1               | 2    | 2               | 2323.35           |  0.992    |
 | 1         | 2               | 2    | 4               | 1164.16           | 1.980    |
 | 1         | 4               | 2    | 8               | 582.572            | 3.957    |
-| 2         | 1               | 2    | 4               | 1636.17           | 1.409    |
-| 2         | 2               | 2    | 8               | 819.445            | 2.813    |
-| 2         | 4               | 2    | 16              | 401.661            | 5.740    |
+| 2         | 1               | 2    | 4               | 1636.17           |  1.409    |
+| 2         | 2               | 2    | 8               | 819.445           |  2.813    |
+| 2         | 4               | 2    | 16               | 401.661           | 5.740    |
+
+
 
 ![HybridSpeedupPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/hybrid_speedup_plot.png)
+
+The approach to analyze weak scaling is similar as described in the MPI section, however 2 OMP threads are used. Since the OpenMP parallelization does not appear to improve execution time but it is being counted as a processor, the speedup drops to about 50%.
+
+| AWS Instances | Cores per Instance | OMP Threads | Total Processes | # Files | Exec. Time (sec) | Speedup |
+| ------------- | ------------------ | ----------- | --------------- | ------- | ---------------- | ------- |
+| 1         | 1               | 1    | 1              | 10 | 158.039           |  1.000    |
+| 1         | 1               | 2    | 2              | 20 | 318.669           |  0.496    |
+| 1         | 2               | 2    | 4              | 40 | 323.245           | 0.489    |
+| 1         | 4               | 2    | 8              | 80 | 323.847            | 0.488    |
+
+
+![HybridSpeedupPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/hybrid_speedup_plot_ws.png)
 
 
 
