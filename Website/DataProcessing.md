@@ -22,4 +22,9 @@ For each chunk, we output a txt file containing corresponding sentence embedding
 
 ![OutputPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/txt.PNG)
 
-## Parallization
+## Parallelization
+Due to the large size of the training set, it could be quite slow if we serially iterate over all the chunks. To accelerate the process, we use multiprocess package in python. Assume we initiate k process. Then we would evenly divide all the chunks into k segments and assign each segment to a process. As a result, each process will handle 1 segment and there is almost no communication overhead. The below plot shows the speed-up against the amount of process.
+
+![OutputPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/process_speedup.PNG)
+
+As the plot shows, parallelization could accelerate the data process. However, the increase of speedup is less than the increase of amount of process. We think the major limitation is the I/O speed. The above experiments is done on my own laptop. Its cpu is intel core i5-8300h @ 2.30Ghz. The memory is M471A1K43CB1-CTD. The memory size is 8 Gb. The operating system is win10 2004. The hardware is samsung mzvlb512hbjq-000l2. 
