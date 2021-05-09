@@ -29,7 +29,7 @@ MPI_Comm_size(MPI_COMM_WORLD, &size);
 // for timing
 double tstart, tend;
 
-/* Split files into roughly equal chunks */
+// Split files into roughly equal chunks
 int ioffset, nper;
 nper    = (n_files+size-1)/size;
 ioffset = rank*nper;
