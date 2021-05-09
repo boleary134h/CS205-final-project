@@ -5,11 +5,11 @@
 The [sequential model](https://github.com/boleary134h/CS205-final-project/blob/main/Website/SequentialModel.md) was run on an AWS t2.micro instance with the following specifications:
 
 - Intel Xeon CPU ES-2676 @ 2.40GHz
-- L1 cache, L2 cache, L3 cache: 64Kb, 256Kb, 30Gb
-- EBS volume: 128Gb
+- L1 cache, L2 cache, L3 cache: 64K, 256K, 30G
+- EBS volume: 48G
 - g++ 7.5.0
 
-There are **287083** documents in the CNN-DailyMail database, and the document matrices are saved in 144 txt files. Total size of all files is 6Gb. Total execution over all files takes **1361 seconds** (~23 minutes). The figure below plots the average runtime for each section of the code: (1) read input matrices, (2) compute similarity matrix, (3) PageRank, (4) sort sentences, and (5) write output.
+There are **287083** documents in the CNN-DailyMail database, and the document matrices are saved in 144 txt files. Total size of all files is 6G. Total execution over all files takes **1361 seconds** (~23 minutes). The figure below plots the average runtime for each section of the code: (1) read input matrices, (2) compute similarity matrix, (3) PageRank, (4) sort sentences, and (5) write output.
 
 ![img](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/sequential_runtime.png)
 
