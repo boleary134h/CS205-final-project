@@ -69,6 +69,6 @@ Since we are performing matrix-vector multiplication at each iteration, this tak
 
 ## Sort sentences
 
-We sort the sentences by their centrality scores and select the top 3 sentences for our summary. This is achieve using the *stable_sort* function in C++, which runs in *O(n* log *n)* given sufficient memory. We do not expect this to be the computational bottleneck of our algorithm since *n* is usually around 20-30 for this dataset.
+We sort the sentences by their centrality scores and select the top 3 sentences for our summary. This is achieve using the *stable_sort* function in C++, which runs in *O(n* log *n)* given sufficient memory. We do not expect this to be the computational bottleneck of our algorithm.
 
 Sequential runtime and comparisons against the parallelized model can be found in our [Results](https://github.com/boleary134h/CS205-final-project/blob/main/Website/Results.md) section.
