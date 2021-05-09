@@ -1,12 +1,12 @@
 # Parallel Model
 
-As discussed in the [Problem Statement](https://github.com/boleary134h/CS205-final-project/blob/main/Website/ProblemStatement.md), our initial thinking was that extractive text summarization is both a big data and a big compute problem. It is a big data problem because datasets like CNN-DailyMail contain hundreds of thousands of text documents. It is a big compute problem because parts of the TextRank algorithm are compute intensive, such as the computation of similarity scores between sentences. The part of TextRank is quadratic in the number of sentences.
+As discussed in the [Problem Statement](https://github.com/boleary134h/CS205-final-project/blob/main/Website/ProblemStatement.md), our initial thinking was that extractive text summarization is both a big data and a big compute problem. It is a big data problem because datasets like CNN-DailyMail contain hundreds of thousands of text documents. It is a big compute problem because parts of the TextRank algorithm are compute intensive, such as the computation of similarity scores between sentences. This part of TextRank is quadratic in the number of sentences.
 
-While it is possible to use Spark for a problem like this, we chose to explore a hybrid model with MPI and OpenMP to address the big data and big compute aspects of TextRank. We use MPI to partition the documents across all of the compute nodes, where each compute node executes the TextRank algorithm on its set of documents. We use OpenMP to parallelize aspects of the TextRank algorithm, such as the sentence similarity computation.
+While it is possible to use Spark for a problem like this, we chose to explore a hybrid model with MPI and OpenMP to address the big data and big compute aspects of TextRank. We use MPI to partition the documents across all of the compute nodes, where each compute node executes the TextRank algorithm on a set of documents. We use OpenMP to parallelize aspects of the TextRank algorithm, such as the sentence similarity computation.
 
 ## MPI
 
-As mentioned previously, we use MPI to partition the documents across the compute nodes within the AWS cluster. Each of these partitions is relatively independent, so we should expect close to linear speedup. We attempt to make the workload as even as possible by given each compute node the same number of input files. For example, if there were four compute nodes and 100 files, then each of the four compute nodes would handle 25 of the files.
+As mentioned previously, we use MPI to partition the documents across the compute nodes within the AWS cluster. Each of these partitions is relatively independent, so we should expect close to linear speedup. We attempt to make the workload as even as possible by giving each compute node the same number of input files. For example, if there were four compute nodes and 100 files, then each of the four compute nodes would handle 25 of the files.
 
 See below for a portion of the code in main.cpp that partitions the input files and uses MPI:
 
@@ -130,7 +130,7 @@ for (int i = 0; i < n_dim; i++) {
 ## Hybrid
 
 
-The hybrid model uses both MPI and OpenMP in the way described above.
+The hybrid model uses both MPI and OpenMP as described above.
 
 
 

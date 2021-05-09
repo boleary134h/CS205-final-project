@@ -19,7 +19,7 @@ We follow a similar setup as in [Lab7_2](https://harvard-iacs.github.io/2021-CS2
 * 2 AWS instances of t2.2xlarge
 * Number of OMP threads controlled by export OMP_NUM_THREADS=X
 * Set MPI port range as 10000:10100 
-* Latency: 0.461 using ping 
+* Latency: 0.461ms using ping 
 * Bandwith: 1.02GB/s using iperf
 
 ### Info on Operating System:
@@ -29,7 +29,7 @@ We follow a similar setup as in [Lab7_2](https://harvard-iacs.github.io/2021-CS2
 ### Info on Compiler:
 * mpic++ - mpiexec version 3.3a2  
 * g++ 7.5.0
-* Compiler flags used: -fopenmp, std=c++11
+* Compiler flags used: -fopenmp, -std=c++11
 
 ### C++ Libraries Used:
 * iostream

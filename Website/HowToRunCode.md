@@ -6,7 +6,7 @@ We followed a similar setup as in [Lab7_2](https://harvard-iacs.github.io/2021-C
 
 ### Get the data
 
-The data that has been processed into sentence representations via python is stored in a Gooogle Drive. We created a shell script to download the data from the Google drive onto the AWS instance. The shell script is in our git repo and is called download_gdrive_data.sh. 
+The data that has been processed into sentence representations via python is stored in a Google Drive. We created a shell script to download the data from the Google drive onto the AWS instance. The shell script is in our git repo and is called download_gdrive_data.sh. 
 
 First copy shell script onto AWS instance. One way of doing this is to first clone git repo on local computer using:
 
@@ -56,14 +56,14 @@ We use makefiles to execute the MPI and Hybrid code. To be able to use makefiles
 sudo apt install make
 ```
 
-Make sure that the instances are able to communicate with eachother through the port range 10000-10100: 
+Make sure that the instances are able to communicate with each other through the port range 10000-10100: 
 
 ```bash
 export MPICH_PORT_RANGE=10000:10100
 export MPIR_CVAR_CH3_PORT_RANGE=10000:10100
 ```
 
-So that we are using the same configuration and compiler, we use the MPI code to find the serial time:
+So that we are using the same configuration and compiler, we use the MPI code to find the serial time used in speedup comparisons:
 
 ```bash
 cd MPI
@@ -75,7 +75,7 @@ mpirun -np 1 ./textrank
 
 Note, we also confirmed that this time is similar if we were to run the a version of the serial code using g++.
 
-To execute using 1 instance, specify the number of total processes to use. For example, to use 4 processes:
+To execute using 1 AWS instance, specify the number of total processes to use. For example, to use 4 processes:
 
 ```bash
 cd MPI
@@ -85,7 +85,7 @@ cd ~/cloud
 mpirun -np 4 ./textrank
 ```
 
-To execute using 2 instances, specify the number of total processes to use on the master and node1. For to use a total of 4 processes: 
+To execute using 2 AWS instances, specify the number of total processes to use on the master and node1. For to use a total of 4 processes: 
 
 ```bash
 cd MPI
@@ -105,7 +105,7 @@ To indicate the number of OpenMP threads, use the command below (command shown i
 export OMP_NUM_THREADS=2
 ```
 
-To execute using 1 instance, specify the number of total processes to use. For example, to use 4 processes (not including the OMP threads):
+To execute using 1 AWS instance, specify the number of total processes to use. For example, to use 4 processes (not including the OMP threads):
 
 ```bash
 cd Hybrid
@@ -115,7 +115,7 @@ cd ~/cloud
 mpirun -np 4 ./textrank
 ```
 
-To execute using 2 instances, specify the number of total processes to use on the master and node1. For to use a total of 4 processes (not including the OMP threads): 
+To execute using 2 AWS instances, specify the number of total processes to use on the master and node1. For example, to use a total of 4 processes (not including the OMP threads): 
 
 ```bash
 cd Hybrid
