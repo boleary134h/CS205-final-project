@@ -15,7 +15,7 @@ Our focus on this work is to parallelize the TextRank algorithm for text summari
 
 For this project, we used the publicly available [CNN-DailyMail dataset](https://github.com/abisee/cnn-dailymail) which consists of ~280K news articles, each approximately 20-30 sentences long. We select the top 3 sentences to generate the summary and evaluate our prediction by the [Rouge](https://www.aclweb.org/anthology/W04-1013/) score.
 
-The types of parallelism explored in this projects are:
+The types of parallelism explored in this project are:
 - Multiprocessing in Python for data processing
 - Loop parallelism with OpenMP
 - Task parallelism with MPI
