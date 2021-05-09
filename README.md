@@ -32,10 +32,10 @@ The types of parallelism explored in this project are:
 
 ## References
 
-Brin, S. and Page, L., 1998. The anatomy of a large-scale hypertextual web search engine. Computer networks and ISDN systems, 30(1-7), pp.107-117.
+Brin, S. and Page, L., 1998. The anatomy of a large-scale hypertextual web search engine. *Computer networks and ISDN systems, 30*(1-7), pp.107-117.
 
-Liu, Y. and Lapata, M., 2019. Text summarization with pretrained encoders. arXiv preprint arXiv:1908.08345.
+Liu, Y. and Lapata, M., 2019. Text summarization with pretrained encoders. *arXiv preprint arXiv:1908.08345*.
 
-Mihalcea, R. and Tarau, P., 2004, July. Textrank: Bringing order into text. In Proceedings of the 2004 conference on empirical methods in natural language processing (pp. 404-411).
+Mihalcea, R. and Tarau, P., 2004, July. Textrank: Bringing order into text. In *Proceedings of the 2004 conference on empirical methods in natural language processing* (pp. 404-411).
 
-Pennington, J., Socher, R. and Manning, C.D., 2014, October. Glove: Global vectors for word representation. In Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP) (pp. 1532-1543).
+Pennington, J., Socher, R. and Manning, C.D., 2014, October. Glove: Global vectors for word representation. In *Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP)* (pp. 1532-1543).
