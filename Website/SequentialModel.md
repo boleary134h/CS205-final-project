@@ -22,18 +22,19 @@ Since
 we can compute the three sums in the same loop as shown below.
 
 **Cosine similarity between 2 vectors**
-
-    double cosineSimilarity(vector<double> &a, vector<double> &b) {
-        double mul = 0.0, d_a = 0.0, d_b = 0.0;
-        vector<double>::iterator a_iter = a.begin();
-    	vector<double>::iterator b_iter = b.begin();
-    	for ( ; a_iter != a.end(); a_iter++, b_iter++) {
-    		mul += *a_iter * *b_iter;
-    		d_a += *a_iter * *a_iter;
-    		d_b += *b_iter * *b_iter;
-    	}
-    	return mul / (sqrt(d_a * d_b));
-    }
+ ```cpp
+double cosineSimilarity(vector<double> &a, vector<double> &b) {
+double mul = 0.0, d_a = 0.0, d_b = 0.0;
+vector<double>::iterator a_iter = a.begin();
+vector<double>::iterator b_iter = b.begin();
+for ( ; a_iter != a.end(); a_iter++, b_iter++) {
+	mul += *a_iter * *b_iter;
+	d_a += *a_iter * *a_iter;
+	d_b += *b_iter * *b_iter;
+}
+return mul / (sqrt(d_a * d_b));
+}
+  ```
 
 It takes *O(d)* to compute the cosine similarity of two *d*-dimensional vectors. We want to find the pairwise cosine similarity for all *n* sentences in the document, which is in the order of *O(n^2)*. Hence, the computational complexity of this steps is in the order *O(d n ^2)*. This step becomes computationally intensive very quickly. A document with 50 sentences will need the cosine similarity for 1225 pairs of sentences. We will attempt to parallelize this step in the [Parallel Model](https://github.com/boleary134h/CS205-final-project/blob/main/Website/ParallelModel.md) section.
 
@@ -47,19 +48,20 @@ where *d* is the damping factor and we let *d*=0.85.
 
 In our implementation, we take the similarity matrix **A** from the previous step, and initialize a transition matrix **T** to each cell of **A** divided by its row sum. This gives the fraction term in the equation above. Then, we multiply **T** by *d* and perform *m* iterations of updates to the vector of centrality scores **c**. We initialize **c** to *1/n* for every element.
 
-    //update centrality scores
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			temp_c[i] += c[j]*T[j][i];
-		}
+```cpp
+//update centrality scores
+for (int i = 0; i < n; i++) {
+	for (int j = 0; j < n; j++) {
+		temp_c[i] += c[j]*T[j][i];
 	}
-  
-  
-	// compute the error for convergence
-	double error = 0.0;
-	for (int i = 0; i < n; i++) {
-		error += fabs(temp_c[i] - c[i]);
-	}
+}
+
+// compute the error for convergence
+double error = 0.0;
+for (int i = 0; i < n; i++) {
+	error += fabs(temp_c[i] - c[i]);
+}
+```
 	
 At every iteration, we check the error for convergence and terminate when error is less than 0.001 or when *max_iter*=50 is reached, whichever is earlier. For our project, convergence was reached within 2-3 iterations for all documents.
 
