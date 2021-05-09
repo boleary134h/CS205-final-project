@@ -84,3 +84,13 @@ The approach to analyze weak scaling is similar as described in the MPI section,
 
 
 ![HybridSpeedupPlot](https://github.com/boleary134h/CS205-final-project/blob/main/Website/PlotResults/hybrid_speedup_plot_ws.png)
+
+## Summarization Evaluation
+
+We use [Rouge](https://www.aclweb.org/anthology/W04-1013/) to evaluate the performance of our summarization method. However, it is complicated to install the original implementation, so we instead use a [python implementation](https://github.com/pltrdy/rouge). We calculated the rouge score on a subset. The score is as follows:
+
+| Rouge-1 | Rouge-2 | Rouge-L | 
+| ------------- | ------------------ | ------------------ | 
+|27.34          |7.72                | 22.24              |
+
+The score is not very ideal. However, since our model is relative simple and it is an unsupervised method, the performance is as expected.
